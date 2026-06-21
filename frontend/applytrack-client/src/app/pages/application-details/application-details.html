@@ -1,0 +1,113 @@
+<div class="page-layout">
+  <aside class="sidebar">
+    <div class="logo">
+      <h2>ApplyTrack</h2>
+      <p>Student Job Tracker</p>
+    </div>
+
+    <nav>
+      <a routerLink="/dashboard">Dashboard</a>
+      <a routerLink="/applications" class="active">Applications</a>
+      <a routerLink="/applications/add">Add Application</a>
+    </nav>
+
+    <button class="logout-btn" (click)="logout()">Logout</button>
+  </aside>
+
+  <main class="main-content">
+    <section class="topbar">
+      <div>
+        <h1>Application Details</h1>
+        <p>View the full details of your saved application.</p>
+      </div>
+
+      <a routerLink="/applications" class="back-btn">← Back to Applications</a>
+    </section>
+
+    <section class="details-card" *ngIf="isLoading">
+      <p>Loading application...</p>
+    </section>
+
+    <section class="details-card error-card" *ngIf="errorMessage && !isLoading">
+      <h3>{{ errorMessage }}</h3>
+      <a routerLink="/applications">Go back</a>
+    </section>
+
+    <section class="details-card" *ngIf="application && !isLoading">
+      <div class="details-header">
+        <div>
+          <h2>{{ application.company_name }}</h2>
+          <p>{{ application.position }}</p>
+        </div>
+
+        <span class="status" [class]="application.status?.toLowerCase()">
+          {{ application.status }}
+        </span>
+      </div>
+
+      <div class="details-grid">
+        <div class="detail-item">
+          <label>Application Type</label>
+          <p>{{ application.application_type || 'Not set' }}</p>
+        </div>
+
+        <div class="detail-item">
+          <label>Work Setup</label>
+          <p>{{ application.work_setup || 'Not set' }}</p>
+        </div>
+
+        <div class="detail-item">
+          <label>Location</label>
+          <p>{{ application.location || 'Not set' }}</p>
+        </div>
+
+        <div class="detail-item">
+          <label>Date Applied</label>
+          <p>
+            {{ application.date_applied ? (application.date_applied | date:'MMM d, y') : 'Not set' }}
+          </p>
+        </div>
+
+        <div class="detail-item">
+          <label>Contact Person</label>
+          <p>{{ application.contact_person || 'Not set' }}</p>
+        </div>
+
+        <div class="detail-item">
+          <label>Contact Email</label>
+          <p>{{ application.contact_email || 'Not set' }}</p>
+        </div>
+
+        <div class="detail-item full-width">
+          <label>Job Link</label>
+          <p>
+            <a
+              *ngIf="application.job_link"
+              [href]="application.job_link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {{ application.job_link }}
+            </a>
+            <span *ngIf="!application.job_link">Not set</span>
+          </p>
+        </div>
+
+        <div class="detail-item full-width">
+          <label>Notes</label>
+          <p>{{ application.notes || 'No notes added.' }}</p>
+        </div>
+      </div>
+
+      <div class="action-row">
+        <a [routerLink]="['/applications', application.id, 'edit']" class="edit-btn">
+          Edit Application
+        </a>
+
+        <button class="delete-btn" (click)="deleteApplication()">
+          Delete Application
+        </button>
+      </div>
+    </section>
+  </main>
+</div>

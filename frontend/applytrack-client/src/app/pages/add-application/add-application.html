@@ -1,0 +1,151 @@
+<div class="page-layout">
+  <aside class="sidebar">
+    <div class="logo">
+      <h2>ApplyTrack</h2>
+      <p>Student Job Tracker</p>
+    </div>
+
+    <nav>
+      <a routerLink="/dashboard">Dashboard</a>
+      <a routerLink="/applications">Applications</a>
+      <a routerLink="/applications/add" class="active">Add Application</a>
+    </nav>
+
+    <button class="logout-btn" (click)="logout()">Logout</button>
+  </aside>
+
+  <main class="main-content">
+    <section class="topbar">
+      <div>
+        <h1>Add Application</h1>
+        <p>Save a new internship, OJT, or job application.</p>
+      </div>
+
+      <a routerLink="/applications" class="back-btn">← Back to Applications</a>
+    </section>
+
+    <section class="form-card">
+      <form (ngSubmit)="addApplication()" class="application-form">
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Company Name *</label>
+            <input
+              type="text"
+              name="company_name"
+              [(ngModel)]="formData.company_name"
+              placeholder="e.g. Accenture"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Position *</label>
+            <input
+              type="text"
+              name="position"
+              [(ngModel)]="formData.position"
+              placeholder="e.g. Web Developer Intern"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Application Type</label>
+            <select name="application_type" [(ngModel)]="formData.application_type">
+              <option>Internship</option>
+              <option>OJT</option>
+              <option>Full-time</option>
+              <option>Part-time</option>
+              <option>Freelance</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Work Setup</label>
+            <select name="work_setup" [(ngModel)]="formData.work_setup">
+              <option>Remote</option>
+              <option>Hybrid</option>
+              <option>On-site</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Status</label>
+            <select name="status" [(ngModel)]="formData.status">
+              <option>Pending</option>
+              <option>Interview</option>
+              <option>Accepted</option>
+              <option>Rejected</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Date Applied</label>
+            <input
+              type="date"
+              name="date_applied"
+              [(ngModel)]="formData.date_applied"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Location</label>
+            <input
+              type="text"
+              name="location"
+              [(ngModel)]="formData.location"
+              placeholder="e.g. Taguig"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Job Link</label>
+            <input
+              type="url"
+              name="job_link"
+              [(ngModel)]="formData.job_link"
+              placeholder="https://example.com/job"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Contact Person</label>
+            <input
+              type="text"
+              name="contact_person"
+              [(ngModel)]="formData.contact_person"
+              placeholder="e.g. HR Maria"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Contact Email</label>
+            <input
+              type="email"
+              name="contact_email"
+              [(ngModel)]="formData.contact_email"
+              placeholder="hr@example.com"
+            />
+          </div>
+        </div>
+
+        <div class="form-group full-width">
+          <label>Notes</label>
+          <textarea
+            name="notes"
+            [(ngModel)]="formData.notes"
+            rows="5"
+            placeholder="Add reminders, requirements, or interview notes..."
+          ></textarea>
+        </div>
+
+        <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+        <div class="form-actions">
+          <a routerLink="/applications" class="cancel-btn">Cancel</a>
+          <button type="submit" [disabled]="isLoading">
+            {{ isLoading ? 'Saving...' : 'Save Application' }}
+          </button>
+        </div>
+      </form>
+    </section>
+  </main>
+</div>

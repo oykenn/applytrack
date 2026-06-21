@@ -1,0 +1,200 @@
+.page-layout {
+  min-height: 100vh;
+  display: flex;
+  background: #f4f7fb;
+}
+
+.sidebar {
+  width: 260px;
+  background: #0f172a;
+  color: white;
+  padding: 28px 22px;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo h2 {
+  margin: 0;
+  font-size: 26px;
+}
+
+.logo p {
+  margin-top: 4px;
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+nav {
+  margin-top: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+nav a {
+  color: #cbd5e1;
+  text-decoration: none;
+  padding: 13px 14px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+nav a.active,
+nav a:hover {
+  background: #2563eb;
+  color: white;
+}
+
+.logout-btn {
+  margin-top: auto;
+  border: none;
+  background: #1e293b;
+  color: white;
+  padding: 13px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.main-content {
+  flex: 1;
+  padding: 32px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.topbar h1 {
+  margin: 0;
+  color: #0f172a;
+  font-size: 34px;
+}
+
+.topbar p {
+  margin-top: 8px;
+  color: #64748b;
+}
+
+.back-btn {
+  background: white;
+  color: #2563eb;
+  text-decoration: none;
+  padding: 13px 18px;
+  border-radius: 12px;
+  font-weight: 700;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+}
+
+.form-card {
+  margin-top: 28px;
+  background: white;
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
+.application-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  color: #334155;
+  font-weight: 700;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 13px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  font-size: 15px;
+  outline: none;
+  font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #2563eb;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.error {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.cancel-btn {
+  padding: 13px 18px;
+  border-radius: 12px;
+  background: #e2e8f0;
+  color: #334155;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.form-actions button {
+  border: none;
+  border-radius: 12px;
+  padding: 13px 18px;
+  background: #2563eb;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.form-actions button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+@media (max-width: 900px) {
+  .page-layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: auto;
+  }
+
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,62 @@
+<div class="register-page">
+  <div class="register-card">
+    <div class="brand">
+      <h1>Create Account</h1>
+      <p>Start tracking your internship and job applications with ApplyTrack.</p>
+    </div>
+
+    <form (ngSubmit)="onRegister()" class="register-form">
+      <label>Full Name *</label>
+      <input
+        type="text"
+        name="fullname"
+        [(ngModel)]="formData.fullname"
+        placeholder="Enter your full name"
+      />
+
+      <label>Email *</label>
+      <input
+        type="email"
+        name="email"
+        [(ngModel)]="formData.email"
+        placeholder="Enter your email"
+      />
+
+      <label>Password *</label>
+      <input
+        type="password"
+        name="password"
+        [(ngModel)]="formData.password"
+        placeholder="Create a password"
+      />
+
+      <label>Course</label>
+      <input
+        type="text"
+        name="course"
+        [(ngModel)]="formData.course"
+        placeholder="e.g. BS Computer Science"
+      />
+
+      <label>School</label>
+      <input
+        type="text"
+        name="school"
+        [(ngModel)]="formData.school"
+        placeholder="e.g. STI College Dasmarinas"
+      />
+
+      <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+      <p class="success" *ngIf="successMessage">{{ successMessage }}</p>
+
+      <button type="submit" [disabled]="isLoading">
+        {{ isLoading ? 'Creating account...' : 'Create Account' }}
+      </button>
+    </form>
+
+    <p class="login-link">
+      Already have an account?
+      <a routerLink="/login">Login</a>
+    </p>
+  </div>
+</div>
