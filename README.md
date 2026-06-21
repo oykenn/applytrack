@@ -83,6 +83,8 @@ ng serve
 * Analytics charts
 * Cloud deployment
 
-## Author
+* ## screenshot and video drive link
+
+* https://drive.google.com/drive/folders/1kvH-T4SvePAD7TeiDlEQ1A7dCYWxMlG1?usp=sharing
 
 Kenn Louis
